@@ -1,9 +1,6 @@
 # course_mvp
 
 [![Build Status](https://travis-ci.org/kkuzar/course_mvp.svg?branch=master)](https://travis-ci.org/kkuzar/course_mvp)
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
-
-a mvp of a course system.. Check out the project's [documentation](http://kkuzar.github.io/course_mvp/).
 
 # Prerequisites
 
