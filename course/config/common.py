@@ -3,11 +3,11 @@ from os.path import join
 from distutils.util import strtobool
 import dj_database_url
 from configurations import Configuration
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class Common(Configuration):
-
     INSTALLED_APPS = (
         'django.contrib.admin',
         'django.contrib.auth',
@@ -16,11 +16,10 @@ class Common(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-
         # Third party apps
-        'rest_framework',            # utilities for rest apis
+        'rest_framework',  # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
-        'django_filters',            # for filtering rest endpoints
+        'django_filters',  # for filtering rest endpoints
 
         # Your apps
         'course.users',
@@ -50,12 +49,22 @@ class Common(Configuration):
         ('Author', 'kuzar.k@pm.me'),
     )
 
+    DB_USERNAME = os.getenv("DB_USERNAME", "mvp")
+    DB_PASSWORD = os.getenv("DB_PASSWORD", "mvp")
+    DB_NAME = os.getenv("DB_NAME", "mvp_db")
+    DB_HOST = os.getenv("DB_HOST", "localhost")
+    DB_PORT = os.getenv("DB_PORT", "5432")
+
     # Postgres
     DATABASES = {
-        'default': dj_database_url.config(
-            default='postgres://postgres:@postgres:5432/postgres',
-            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': DB_NAME,
+            'USER': DB_USERNAME,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
+            'PORT': DB_PORT,
+        }
     }
 
     # General
